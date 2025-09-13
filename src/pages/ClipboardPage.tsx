@@ -11,8 +11,17 @@ const ClipboardPage: React.FC = () => {
     try {
       await writeText(clipboardText);
       setOutput(`Text written to clipboard: ${clipboardText}`);
-    } catch (error) {
-      setOutput(`Error: ${error}`);
+    } catch (error: any) {
+      if (
+        error?.message?.includes("forbidden") ||
+        error?.message?.includes("not allowed")
+      ) {
+        setOutput(
+          "Clipboard write failed: Permission denied. Please check app capabilities and system settings."
+        );
+      } else {
+        setOutput(`Clipboard error: ${error?.message || error}`);
+      }
     }
   };
 
@@ -20,8 +29,17 @@ const ClipboardPage: React.FC = () => {
     try {
       const text = await readText();
       setOutput(text || "Clipboard is empty");
-    } catch (error) {
-      setOutput(`Error: ${error}`);
+    } catch (error: any) {
+      if (
+        error?.message?.includes("forbidden") ||
+        error?.message?.includes("not allowed")
+      ) {
+        setOutput(
+          "Clipboard read failed: Permission denied. Please check app capabilities and system settings."
+        );
+      } else {
+        setOutput(`Clipboard error: ${error?.message || error}`);
+      }
     }
   };
 
@@ -39,7 +57,8 @@ const text = await readText();
     <div className="page-container">
       <h1>Clipboard APIs</h1>
       <p>
-        Tauri provides secure APIs for reading from and writing to the system clipboard.
+        Tauri provides secure APIs for reading from and writing to the system
+        clipboard.
       </p>
 
       <div className="demo-section">

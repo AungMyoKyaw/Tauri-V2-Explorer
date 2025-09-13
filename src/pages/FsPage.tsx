@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { readTextFile, writeTextFile, readDir, mkdir, remove } from "@tauri-apps/plugin-fs";
+import {
+  readTextFile,
+  writeTextFile,
+  readDir,
+  mkdir,
+  remove
+} from "@tauri-apps/plugin-fs";
 import CodeViewer from "../components/CodeViewer";
 import OutputDisplay from "../components/OutputDisplay";
 
@@ -77,7 +83,8 @@ await remove("path/to/file.txt");
     <div className="page-container">
       <h1>File System APIs</h1>
       <p>
-        Tauri provides secure file system APIs for reading, writing, and managing files and directories.
+        Tauri provides secure file system APIs for reading, writing, and
+        managing files and directories.
       </p>
 
       <div className="demo-section">

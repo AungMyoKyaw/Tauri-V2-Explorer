@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import { requestPermission, isPermissionGranted, sendNotification } from "@tauri-apps/plugin-notification";
+import {
+  requestPermission,
+  isPermissionGranted,
+  sendNotification
+} from "@tauri-apps/plugin-notification";
 import CodeViewer from "../components/CodeViewer";
 import OutputDisplay from "../components/OutputDisplay";
 
@@ -12,8 +16,17 @@ const NotificationPage: React.FC = () => {
     try {
       const permissionGranted = await isPermissionGranted();
       setOutput(`Permission granted: ${permissionGranted}`);
-    } catch (error) {
-      setOutput(`Error: ${error}`);
+    } catch (error: any) {
+      if (
+        error?.message?.includes("forbidden") ||
+        error?.message?.includes("not allowed")
+      ) {
+        setOutput(
+          "Notification permission check failed: Permission denied. Please check app capabilities and system settings."
+        );
+      } else {
+        setOutput(`Notification error: ${error?.message || error}`);
+      }
     }
   };
 
@@ -21,8 +34,17 @@ const NotificationPage: React.FC = () => {
     try {
       const permission = await requestPermission();
       setOutput(`Permission status: ${permission}`);
-    } catch (error) {
-      setOutput(`Error: ${error}`);
+    } catch (error: any) {
+      if (
+        error?.message?.includes("forbidden") ||
+        error?.message?.includes("not allowed")
+      ) {
+        setOutput(
+          "Notification permission request failed: Permission denied. Please check app capabilities and system settings."
+        );
+      } else {
+        setOutput(`Notification error: ${error?.message || error}`);
+      }
     }
   };
 
@@ -30,8 +52,17 @@ const NotificationPage: React.FC = () => {
     try {
       sendNotification({ title, body });
       setOutput(`Notification sent: ${title}`);
-    } catch (error) {
-      setOutput(`Error: ${error}`);
+    } catch (error: any) {
+      if (
+        error?.message?.includes("forbidden") ||
+        error?.message?.includes("not allowed")
+      ) {
+        setOutput(
+          "Notification send failed: Permission denied. Please check app capabilities and system settings."
+        );
+      } else {
+        setOutput(`Notification error: ${error?.message || error}`);
+      }
     }
   };
 
@@ -54,9 +85,7 @@ sendNotification({
   return (
     <div className="page-container">
       <h1>Notification APIs</h1>
-      <p>
-        Tauri provides APIs for sending desktop notifications to the user.
-      </p>
+      <p>Tauri provides APIs for sending desktop notifications to the user.</p>
 
       <div className="demo-section">
         <h3>Notification Permissions</h3>

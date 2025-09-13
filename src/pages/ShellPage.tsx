@@ -16,8 +16,17 @@ const ShellPage: React.FC = () => {
         stdout: result.stdout,
         stderr: result.stderr
       });
-    } catch (error) {
-      setOutput(`Error: ${error}`);
+    } catch (error: any) {
+      if (
+        error?.message?.includes("forbidden") ||
+        error?.message?.includes("not allowed")
+      ) {
+        setOutput(
+          "Shell command failed: Permission denied. Please check app capabilities and system settings."
+        );
+      } else {
+        setOutput(`Shell error: ${error?.message || error}`);
+      }
     }
   };
 
@@ -37,9 +46,7 @@ const result = await cmd.execute();
   return (
     <div className="page-container">
       <h1>Shell APIs</h1>
-      <p>
-        Tauri provides secure APIs for executing shell commands.
-      </p>
+      <p>Tauri provides secure APIs for executing shell commands.</p>
 
       <div className="demo-section">
         <h3>Execute Shell Commands</h3>

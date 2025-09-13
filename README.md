@@ -1,3 +1,27 @@
+# Permission Fixes and Error Resolution
+
+## Window Maximize Permission
+
+To enable window maximize functionality in Tauri V2, ensure the following permission is set in `src-tauri/capabilities/default.json`:
+
+```json
+{
+  "permissions": ["core:window:allow-maximize"]
+}
+```
+
+Do NOT add permissions to `tauri.conf.json`—this will cause a lint/compile error. All window and core permissions must be set in the capabilities manifest.
+
+## Error Resolution Workflow
+
+1. Added `core:window:allow-maximize` to `src-tauri/capabilities/default.json`.
+2. Removed invalid `permissions` property from `tauri.conf.json`.
+3. Scanned codebase for permission and window errors—none found.
+4. Ran full build and lint checks for frontend (React/TypeScript) and backend (Rust/Tauri)—no errors found.
+5. All functionality validated and documented.
+
+For further permission configuration, see [Tauri v2 ACL and Capabilities documentation](https://github.com/tauri-apps/tauri-docs/blob/v2/src/content/docs/reference/acl/core-permissions.mdx).
+
 # Tauri V2 Explorer
 
 This application demonstrates the core features of Tauri V2 through interactive examples.
@@ -28,6 +52,7 @@ This application demonstrates the core features of Tauri V2 through interactive 
 ## Building
 
 To build the application for production:
+
 ```bash
 npm run tauri build
 ```
@@ -69,6 +94,7 @@ The application is structured as follows:
 ## Development
 
 The application follows Tauri V2 best practices and uses:
+
 - React with TypeScript for the frontend
 - Vite as the build tool
 - Rust for the backend
