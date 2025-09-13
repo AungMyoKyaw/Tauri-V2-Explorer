@@ -1,7 +1,76 @@
-# Tauri + React + Typescript
+# Tauri V2 Explorer
 
-This template should help get you started developing with Tauri, React and Typescript in Vite.
+This application demonstrates the core features of Tauri V2 through interactive examples.
 
-## Recommended IDE Setup
+## Features Implemented
 
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+1. **Dialog APIs** - File open/save dialogs and message dialogs
+2. **File System APIs** - Reading, writing, and managing files and directories
+3. **Window Management APIs** - Controlling window properties and behavior
+4. **Networking APIs** - Making HTTP requests
+5. **IPC (Inter-Process Communication)** - Communication between frontend and backend
+6. **Shell APIs** - Executing shell commands
+7. **Clipboard APIs** - Reading from and writing to the system clipboard
+8. **Notification APIs** - Sending desktop notifications
+
+## Installation
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Run the development version:
+   ```bash
+   npm run tauri dev
+   ```
+
+## Building
+
+To build the application for production:
+```bash
+npm run tauri build
+```
+
+This will create platform-specific bundles in the `src-tauri/target/release/bundle/` directory.
+
+## Architecture
+
+The application is structured as follows:
+
+- `src/` - Frontend React components
+  - `components/` - Reusable UI components
+  - `pages/` - Feature-specific pages for each Tauri API category
+  - `App.tsx` - Main application component
+- `src-tauri/` - Tauri backend code
+  - `src/main.rs` - Application entry point
+  - `src/lib.rs` - Tauri plugin initialization and command handlers
+  - `Cargo.toml` - Rust dependencies
+  - `tauri.conf.json` - Tauri configuration
+
+## Tauri Plugins Used
+
+- `@tauri-apps/plugin-dialog` - For file dialogs
+- `@tauri-apps/plugin-fs` - For file system operations
+- `@tauri-apps/plugin-http` - For HTTP requests
+- `@tauri-apps/plugin-shell` - For executing shell commands
+- `@tauri-apps/plugin-clipboard-manager` - For clipboard operations
+- `@tauri-apps/plugin-notification` - For desktop notifications
+- `@tauri-apps/plugin-opener` - For opening files/URLs with default applications
+
+## Usage
+
+1. Launch the application
+2. Use the sidebar to navigate between different API categories
+3. Interact with the demo buttons to see the APIs in action
+4. View the source code for each example to understand the implementation
+5. See real-time output and feedback from API calls
+
+## Development
+
+The application follows Tauri V2 best practices and uses:
+- React with TypeScript for the frontend
+- Vite as the build tool
+- Rust for the backend
+
+All code is organized to be clear and educational, making it easy to understand how each Tauri API works.
