@@ -1,5 +1,10 @@
 # Tauri V2 Explorer
 
+[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/AungMyoKyaw/Tauri-V2-Explorer/blob/main/LICENSE)
+[![Tauri](https://img.shields.io/badge/Tauri-v2-orange.svg?style=flat-square)](https://tauri.app)
+[![React](https://img.shields.io/badge/React-19-blue.svg?style=flat-square)](https://reactjs.org)
+[![Platform](https://img.shields.io/badge/platform-cross--platform-brightgreen.svg?style=flat-square)](https://tauri.app)
+
 This application demonstrates the core features of Tauri V2 through interactive examples. Explore various Tauri APIs with hands-on examples and real-time feedback.
 
 ![App Preview](app-preview.png)
@@ -83,3 +88,7 @@ The application is structured as follows:
 All permissions are configured in `src-tauri/capabilities/default.json`. This file includes permissions for all implemented features, including specific shell command permissions for security.
 
 For more information on Tauri v2 ACL and Capabilities, see [Tauri v2 documentation](https://v2.tauri.app).
+
+## License
+
+MIT © [Aung Myo Kyaw](https://github.com/AungMyoKyaw)
