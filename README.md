@@ -2,6 +2,8 @@
 
 This application demonstrates the core features of Tauri V2 through interactive examples. Explore various Tauri APIs with hands-on examples and real-time feedback.
 
+![App Preview](app-preview.png)
+
 ## Features Implemented
 
 1. **Dialog APIs** - File open/save dialogs and message dialogs
