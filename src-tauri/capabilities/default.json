@@ -35,7 +35,6 @@
     "fs:allow-remove",
     "http:default",
     "http:allow-fetch",
-    "shell:allow-execute",
     "shell:allow-open",
     "clipboard-manager:default",
     "clipboard-manager:allow-read-text",
@@ -45,6 +44,61 @@
     "notification:allow-request-permission",
     "notification:allow-notify",
     "opener:default",
-    "core:webview:allow-internal-toggle-devtools"
+    "core:webview:allow-internal-toggle-devtools",
+    {
+      "identifier": "shell:allow-execute",
+      "allow": [
+        {
+          "name": "run-echo",
+          "cmd": "echo",
+          "args": true
+        },
+        {
+          "name": "run-ls",
+          "cmd": "ls",
+          "args": true
+        },
+        {
+          "name": "run-pwd",
+          "cmd": "pwd",
+          "args": false
+        },
+        {
+          "name": "run-cat",
+          "cmd": "cat",
+          "args": true
+        },
+        {
+          "name": "run-grep",
+          "cmd": "grep",
+          "args": true
+        },
+        {
+          "name": "run-head",
+          "cmd": "head",
+          "args": true
+        },
+        {
+          "name": "run-tail",
+          "cmd": "tail",
+          "args": true
+        },
+        {
+          "name": "run-wc",
+          "cmd": "wc",
+          "args": true
+        },
+        {
+          "name": "run-date",
+          "cmd": "date",
+          "args": true
+        },
+        {
+          "name": "run-whoami",
+          "cmd": "whoami",
+          "args": false
+        }
+      ]
+    }
   ]
 }
